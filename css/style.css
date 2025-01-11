@@ -31,3 +31,13 @@
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
 }
+
+
+.avatar-img img {
+    -webkit-transition: filter 375ms ease-in 0.2s, -webkit-transform 0s;
+    -moz-transition: filter 375ms ease-in 0.2s, -moz-transform 0s;
+    -o-transition: filter 375ms ease-in 0.2s, -o-transform 0s;
+    -ms-transition: filter 375ms ease-in 0.2s, -ms-transform 0s;
+    transition: filter 375ms ease-in 0.2s, transform 0s;
+
+}
