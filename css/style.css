@@ -13,3 +13,12 @@
 [data-theme="dark"] #footer::before {
   background: transparent !important;
 }
+
+/* 分类美化 */
+.category-lists .category-list .category-list-count:after {
+    content: ' )';
+}
+
+.category-lists .category-list .category-list-count:before {
+    content: '( ';
+}
