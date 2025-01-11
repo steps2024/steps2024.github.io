@@ -22,3 +22,12 @@
 .category-lists .category-list .category-list-count:before {
     content: '( ';
 }
+
+/* 头像不旋转 */
+.avatar-img img:hover {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
