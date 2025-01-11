@@ -30,6 +30,8 @@
     -o-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
+    user-drag: none; /* 禁止图片拖动 */
+    -webkit-user-drag: none; /* Safari 浏览器支持 */
 }
 
 
@@ -39,5 +41,7 @@
     -o-transition: filter 375ms ease-in 0.2s, -o-transform 0s;
     -ms-transition: filter 375ms ease-in 0.2s, -ms-transform 0s;
     transition: filter 375ms ease-in 0.2s, transform 0s;
+    -webkit-user-drag: none; /* 禁止 Safari 中的拖动 */
+    user-drag: none; /* 禁止拖动 */    
 
 }
