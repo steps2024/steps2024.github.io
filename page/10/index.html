@@ -1,27 +1,117 @@
 <!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>内识进阶 - Hexo 博客</title><meta name="author" content="晴空"><meta name="copyright" content="晴空"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="智者为保持智慧而隐匿。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="内识进阶">
-<meta property="og:url" content="https://message2024.github.io/page/10/index.html">
+<meta property="og:url" content="https://rahn256.github.io/page/10/index.html">
 <meta property="og:site_name" content="内识进阶">
 <meta property="og:description" content="智者为保持智慧而隐匿。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://message2024.github.io/img/11.webp">
+<meta property="og:image" content="https://rahn256.github.io/img/avatar.jpg">
 <meta property="article:author" content="晴空">
+<meta property="article:tag" content="hexo,butterfly,内识进阶,来自上帝的新讯息,第三卷">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://message2024.github.io/img/11.webp"><link rel="shortcut icon" href="/img/message.png"><link rel="canonical" href="https://message2024.github.io/page/10/index.html"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://rahn256.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/message.png"><link rel="canonical" href="https://rahn256.github.io/page/10/index.html"><link rel="preconnect"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/pluginsSrc/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="/pluginsSrc/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
   translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":700},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":600,"highlightFullpage":false,"highlightMacStyle":true},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
-    homepage: true,
+    homepage: false,
     post: false
   },
   runtime: '天',
@@ -34,142 +124,114 @@
   },
   copyright: undefined,
   lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
-  source: {
-    justifiedGallery: {
-      js: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: '/pluginsSrc/flickr-justified-gallery/dist/fjGallery.css'
-    }
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: '/pluginsSrc/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: true,
+  islazyloadPlugin: true,
   isAnchor: false,
   percent: {
-    toc: true,
+    toc: false,
     rightside: false,
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '内识进阶',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
+  isHighlightShrink: undefined,
   isToc: false,
-  postUpdate: '2025-01-19 09:45:50'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
-
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
-
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
-
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
-
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          if (t === 'dark') activateDarkMode()
-          else if (t === 'light') activateLightMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/11.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">301</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="内识进阶"><span class="site-name">内识进阶</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/20/210/" title="第二百一十阶：回顾"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/51.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十阶：回顾"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/210/" title="第二百一十阶：回顾">第二百一十阶：回顾</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:46.000Z" title="发表于 2024-10-20 14:14:46">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 210 REVIEWToday review the past two weeks of preparation, reading each lesson as it is given and recalling your practice for that day. In your long practice period today once again begin to assess the progression of events and all of your practices. Begin to see that there is a relationship between how you apply your mind and what you experience as a result. View your life objectively, without guilt or blame, so that you may understand how your life is truly emerging.
-今天回顾过去两周的准备，阅读每节课的内容，回 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/20/209/" title="第二百零九阶：今天，我不会对我自己残忍"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/60.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零九阶：今天，我不会对我自己残忍"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/209/" title="第二百零九阶：今天，我不会对我自己残忍">第二百零九阶：今天，我不会对我自己残忍</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:43.000Z" title="发表于 2024-10-20 14:14:43">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 209 I WILL NOT BE CRUEL WITH MYSELF TODAY.Do not be cruel to yourself by attempting to wear your crown of thorns, which represents your system of beliefs and assumptions. Do not project upon yourself the weight of blame and unforgiveness. Do not attempt to force your mind to exemplify those qualities that you hold dear, for they will arise naturally from Knowledge. 
-不要试图戴上代表你的信念和假设体系的荆棘冠冕，从而对自己残忍。不要把自责和不原谅的重担加在自己身上。不要试图强迫自己的心灵去体现那些你所珍视的品质，因为它们会自然而然地从内识中产生。
-Instead, enter into stillness in y ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/20/208/" title="第二百零八阶：我真正珍视的一切都将源自内识的表达"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/10.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零八阶：我真正珍视的一切都将源自内识的表达"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/208/" title="第二百零八阶：我真正珍视的一切都将源自内识的表达">第二百零八阶：我真正珍视的一切都将源自内识的表达</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:41.000Z" title="发表于 2024-10-20 14:14:41">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 208 ALL THINGS I TRULY VALUE WILL BE EXPRESSED FROM KNOWLEDGE.All things that are most highly valued in human life—love, patience, devotion, tolerance, forgiveness, true accomplishment, courage and faith—all naturally arise from Knowledge, for Knowledge is their source. They are but the outward expression of a mind that is serving Knowledge. Thus, they need not be forced upon oneself through arduous selfdiscipline. They arise naturally, for the mind serving Knowledge can only exemplify its  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/20/207/" title="第二百零七阶：我会原谅那些我认为伤害过我的人"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/42.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零七阶：我会原谅那些我认为伤害过我的人"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/207/" title="第二百零七阶：我会原谅那些我认为伤害过我的人">第二百零七阶：我会原谅那些我认为伤害过我的人</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:39.000Z" title="发表于 2024-10-20 14:14:39">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 207 I FORGIVE THOSE WHOM I THINK HAVE HURT ME.This statement represents your intention to have Knowledge, for unforgiveness is merely the application of blame towards a situation in which you were unable to understand or to apply Knowledge. All your failures are your own in this respect. This may look like a burden of blame at first, until you realize the greater opportunity that it presents to you. For if all failures are your own, then you will realize that all correction is given to you  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/20/206/" title="第二百零六阶：爱正在我心中流淌"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/12.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零六阶：爱正在我心中流淌"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/206/" title="第二百零六阶：爱正在我心中流淌">第二百零六阶：爱正在我心中流淌</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:36.000Z" title="发表于 2024-10-20 14:14:36">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 206 LOVE IS FLOWING FROM ME NOW.Love is flowing from you, and today you can attempt to experience this and to release those things that  obstruct it. Without judgment, without illusion, without fantasy and without the limitations of a purely human viewpoint, you will see that love is flowing from you. You will see that all your frustration in life is your inability to experience and to express this love which wishes to flow from you. Regardless of the circumstances in which your frustration ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/20/205/" title="第二百零五阶：今天，我不会评判这个世界"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/40.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零五阶：今天，我不会评判这个世界"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/205/" title="第二百零五阶：今天，我不会评判这个世界">第二百零五阶：今天，我不会评判这个世界</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:34.000Z" title="发表于 2024-10-20 14:14:34">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 205 I WILL NOT JUDGE THE WORLD TODAY.Do not let your mind deprecate itself by projecting blame upon the world. With blame the world becomes misunderstood, and your mind becomes a burden rather than an asset to you. Today’s idea requires practice, discipline and application, for your mind and all minds within the world have been misunderstood, misused and misdirected. Thus, you are now learning to utilize the mind positively by giving it a true function in service to Knowledge. 
-不要让你的心灵因将责备投 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/20/204/" title="第二百零四阶：今天，我会保持和平"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/62.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零四阶：今天，我会保持和平"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/204/" title="第二百零四阶：今天，我会保持和平">第二百零四阶：今天，我会保持和平</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:31.000Z" title="发表于 2024-10-20 14:14:31">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 204 I WILL BE AT PEACE TODAY.Be at peace today. Let not your negative imagination conjure up images of loss and destruction. Let not your anxiety overtake your concentration on Knowledge. To objectively consider your world and the Greater Community in which you live should not incite fear but respect—respect for the power of the time in which you live and its importance for the future, respect for your own emerging abilities and their usefulness in the world that you perceive, respect for t ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/13/203/" title="第二百零三阶：大社区正在影响我所看到的世界"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/29.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零三阶：大社区正在影响我所看到的世界"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/13/203/" title="第二百零三阶：大社区正在影响我所看到的世界">第二百零三阶：大社区正在影响我所看到的世界</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-13T02:05:11.000Z" title="发表于 2024-10-13 10:05:11">2024-10-13</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 203 THE GREATER COMMUNITY IS INFLUENCING THE WORLD I SEE.If you can accept that your world is part of a Greater Community, which is simply obvious if you will look, then you must accept that the world is being influenced by the Greater Community, for the world is part of a Greater Community and cannot be independent of it. How the Greater Community is influencing your world is beyond your current ability to comprehend. But to understand that the world is being influenced allows you to view  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/13/202/" title="第二百零二阶：今天，我会见证大社区"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/60.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零二阶：今天，我会见证大社区"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/13/202/" title="第二百零二阶：今天，我会见证大社区">第二百零二阶：今天，我会见证大社区</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-13T02:05:09.000Z" title="发表于 2024-10-13 10:05:09">2024-10-13</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 202 I BEHOLD THE GREATER COMMUNITY TODAY.You can behold the Greater Community, for you are living in the middle of the Greater Community.  Because you are on the surface of the world, preoccupied with human endeavors and limited by time and space, does not mean that you cannot behold the grandeur of the Greater Community. You may behold this by looking at the sky above and by looking at the world below. You may realize this by understanding the relationship of humanity to the universe at la ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/10/13/201/" title="第二百零一阶：我的心灵是为了服务于内识而设计的"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/49.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零一阶：我的心灵是为了服务于内识而设计的"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/13/201/" title="第二百零一阶：我的心灵是为了服务于内识而设计的">第二百零一阶：我的心灵是为了服务于内识而设计的</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-13T02:05:07.000Z" title="发表于 2024-10-13 10:05:07">2024-10-13</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-11T23:19:14.043Z" title="更新于 2025-01-12 07:19:14">2025-01-12</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 201 MY MIND WAS MADE TO SERVE KNOWLEDGE.Understanding this, you will realize the value of your mind, and you will not deprecate it. Realizing this, you will understand the value of your body, and you will not deprecate it. For your mind and your body are but vehicles to express Knowledge. In this, you become the recipient of Knowledge. In this, you remember your great Heritage. In this, you are comforted by the assurance of your great destiny. 
-理解这一点，你会意识到心灵的价值，不再贬低它。理解这一点，你也会理解身体的价值，不再贬低它。 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/9/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#content-inner">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/#content-inner">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/#content-inner">31</a><a class="extend next" rel="next" href="/page/11/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/11.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">晴空</div><div class="author-info__description">智者为保持智慧而隐匿。</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">301</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><div class="sticky_layout"><div class="card-widget card-categories"><div class="item-headline">
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/style.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">309</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">内识进阶</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">内识进阶</h1></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover"><a href="/2024/11/03/218/" title="第二百一十八阶：今天，我会把内识保留在我自己的内心深处"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/2.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十八阶：今天，我会把内识保留在我自己的内心深处"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/11/03/218/" title="第二百一十八阶：今天，我会把内识保留在我自己的内心深处">第二百一十八阶：今天，我会把内识保留在我自己的内心深处</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-11-03T04:36:55.000Z" title="发表于 2024-11-03 12:36:55">2024-11-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-07T04:08:49.153Z" title="更新于 2024-11-07 12:08:49">2024-11-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 218 I WILL HOLD KNOWLEDGE WITHIN MYSELF TODAY.Along with Knowledge comes the Wisdom of how to use Knowledge in the world. Thus, Knowledge is the source of your understanding and Wisdom is learning how to apply it meaningfully and constructively in the world. You are not yet wise, so keep Knowledge within yourself today. Allow it to strengthen itself. Allow it to grow. It will give itself naturally, without your attempting to force its expression. In time, you will learn to become wise,...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/27/217/" title="第二百一十七阶：今天，我会把我自己交给内识"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/1.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十七阶：今天，我会把我自己交给内识"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/27/217/" title="第二百一十七阶：今天，我会把我自己交给内识">第二百一十七阶：今天，我会把我自己交给内识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-27T03:39:43.000Z" title="发表于 2024-10-27 11:39:43">2024-10-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-07T04:08:18.434Z" title="更新于 2024-11-07 12:08:18">2024-11-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 217 I GIVE MYSELF TO KNOWLEDGE TODAY.Give yourself to Knowledge today by undertaking today’s practice with true commitment and dedication, letting no false or self-limiting ideas interfere with your genuine pursuit. In this way, you give yourself to Knowledge by allowing Knowledge to give itself to you. How small, then, is that which is asked of you and how great is your reward. For every moment you spend in experiencing stillness or engaging your mind meaningfully, Knowledge becomes...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/27/216/" title="第二百一十六阶：我的生命中有一种精神存在"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/77.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十六阶：我的生命中有一种精神存在"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/27/216/" title="第二百一十六阶：我的生命中有一种精神存在">第二百一十六阶：我的生命中有一种精神存在</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-27T03:39:40.000Z" title="发表于 2024-10-27 11:39:40">2024-10-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-03T04:28:53.488Z" title="更新于 2024-11-03 12:28:53">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 216 THERE IS A SPIRITUAL PRESENCE IN MY LIFE.The Spiritual Presence in your life is ever with you, ever available to you and ever reminding you to look beyond your own judgments. It is forever providing for you the support, the assistance and the guidance necessary to minimize the wrong application of your mind and to strengthen the right application of your mind to allow Knowledge to arise within...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/27/215/" title="第二百一十五阶：我的老师与我同在。我不是孤身一人。"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/84.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十五阶：我的老师与我同在。我不是孤身一人。"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/27/215/" title="第二百一十五阶：我的老师与我同在。我不是孤身一人。">第二百一十五阶：我的老师与我同在。我不是孤身一人。</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-27T03:39:38.000Z" title="发表于 2024-10-27 11:39:38">2024-10-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-03T04:19:38.417Z" title="更新于 2024-11-03 12:19:38">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 215 MY TEACHERS ARE WITH ME. I AM NOT ALONE.Your Teachers are with you, in the background. They are very careful not to extend their influence  upon you too strongly, for you are not yet capable to receive this and to utilize it on your own behalf. Realize, then, that you travel through life with great assistance, for your Teachers are with you to help you to realize and to cultivate Knowledge....</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/27/214/" title="第二百一十四阶：我不理解我自己"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/82.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十四阶：我不理解我自己"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/27/214/" title="第二百一十四阶：我不理解我自己">第二百一十四阶：我不理解我自己</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-27T03:39:36.000Z" title="发表于 2024-10-27 11:39:36">2024-10-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-03T03:41:28.453Z" title="更新于 2024-11-03 11:41:28">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 214 I DO NOT UNDERSTAND MYSELF.This is not a statement of failure or limitation. It is simply a statement to liberate you from your own impediments. How can you possibly understand yourself if Knowledge is not revealing all things to you? How can you possibly understand the world when Knowledge is not revealing the world to you? This is pure experience, beyond all concepts and beliefs, for concepts and beliefs can only follow the experience and attempt to provide a structure where the...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/27/213/" title="第二百一十三阶：我不理解这个世界"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/73.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十三阶：我不理解这个世界"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/27/213/" title="第二百一十三阶：我不理解这个世界">第二百一十三阶：我不理解这个世界</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-27T03:39:34.000Z" title="发表于 2024-10-27 11:39:34">2024-10-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-03T03:32:24.216Z" title="更新于 2024-11-03 11:32:24">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 213 I DO NOT UNDERSTAND THE WORLD.You do not understand the world. You only entertain judgments about it and then attempt to  understand your judgments. The world will reveal itself to you as you look without these restraints and limitations. In this, you will find that your beliefs can become useful in allowing you to take each next step in life. They need not limit your perception of the universe. You cannot be in the world without beliefs or assumptions. Yet your beliefs and...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/27/212/" title="第二百一十二阶：我从所有与我一起练习的人身上获得力量"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/89.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十二阶：我从所有与我一起练习的人身上获得力量"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/27/212/" title="第二百一十二阶：我从所有与我一起练习的人身上获得力量">第二百一十二阶：我从所有与我一起练习的人身上获得力量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-27T03:39:33.000Z" title="发表于 2024-10-27 11:39:33">2024-10-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-03T02:57:45.717Z" title="更新于 2024-11-03 10:57:45">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 212 I GAIN STRENGTH FROM ALL WHO PRACTICE WITH ME.You do gain strength from all who practice with you, for every mind that attempts to engage itself  with Knowledge strengthens all other minds in doing so as well. In this, you cast your influence upon the world. In this, all others who seek to serve a true purpose cast their influence upon you. This counteracts the ignorant forces of the world. This counteracts the destructive forces in the world. This casts its influence on all minds...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/27/211/" title="第二百一十一阶：我在这个世界之外有伟大的朋友"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/42.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十一阶：我在这个世界之外有伟大的朋友"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/27/211/" title="第二百一十一阶：我在这个世界之外有伟大的朋友">第二百一十一阶：我在这个世界之外有伟大的朋友</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-27T03:39:29.000Z" title="发表于 2024-10-27 11:39:29">2024-10-27</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-03T02:40:59.928Z" title="更新于 2024-11-03 10:40:59">2024-11-03</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 211 I HAVE GREAT FRIENDS BEYOND THIS WORLD.You have great friends beyond this world. That is why humanity is seeking to enter into the Greater  Community because the Greater Community represents a broader range of its true relationships. You have true friends beyond the world because you are not alone in the world and you are not alone in the Greater Community of worlds. You have friends beyond this world because your Spiritual Family has its representatives everywhere. You have friends...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/20/210/" title="第二百一十阶：回顾"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/7.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百一十阶：回顾"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/210/" title="第二百一十阶：回顾">第二百一十阶：回顾</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:46.000Z" title="发表于 2024-10-20 14:14:46">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-20T06:18:42.284Z" title="更新于 2024-10-20 14:18:42">2024-10-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 210 REVIEWToday review the past two weeks of preparation, reading each lesson as it is given and recalling your practice for that day. In your long practice period today once again begin to assess the progression of events and all of your practices. Begin to see that there is a relationship between how you apply your mind and what you experience as a result. View your life objectively, without guilt or blame, so that you may understand how your life is truly...</div></div></div><div class="recent-post-item"><div class="post_cover"><a href="/2024/10/20/209/" title="第二百零九阶：今天，我不会对我自己残忍"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/85.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第二百零九阶：今天，我不会对我自己残忍"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/10/20/209/" title="第二百零九阶：今天，我不会对我自己残忍">第二百零九阶：今天，我不会对我自己残忍</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-10-20T06:14:43.000Z" title="发表于 2024-10-20 14:14:43">2024-10-20</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-11-07T04:06:56.551Z" title="更新于 2024-11-07 12:06:56">2024-11-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/">内识之路</a></span></div><div class="content">STEP 209 I WILL NOT BE CRUEL WITH MYSELF TODAY.Do not be cruel to yourself by attempting to wear your crown of thorns, which represents your system of beliefs and assumptions. Do not project upon yourself the weight of blame and unforgiveness. Do not attempt to force your mind to exemplify those qualities that you hold dear, for they will arise naturally from Knowledge.  不要试图戴上代表你的信念和假设体系的荆棘冠冕，从而对自己残忍。不要把自责和不原谅的重担加在自己身上。不要试图强迫自己的心灵去体现那些你所珍视的品质，因为它们会自然而然地从内识中产生。 Instead, enter into stillness...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/9/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#content-inner">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/#content-inner">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/#content-inner">31</a><a class="extend next" rel="next" href="/page/11/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">晴空</div><div class="author-info-description">智者为保持智慧而隐匿。</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">309</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/308/" title="第三百零八阶：回顾"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/9.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第三百零八阶：回顾"/></a><div class="content"><a class="title" href="/2025/01/27/308/" title="第三百零八阶：回顾">第三百零八阶：回顾</a><time datetime="2025-01-27T06:06:52.000Z" title="发表于 2025-01-27 14:06:52">2025-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/307/" title="第三百零七阶：内识现在就生活在我的内心深处"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/70.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第三百零七阶：内识现在就生活在我的内心深处"/></a><div class="content"><a class="title" href="/2025/01/27/307/" title="第三百零七阶：内识现在就生活在我的内心深处">第三百零七阶：内识现在就生活在我的内心深处</a><time datetime="2025-01-27T06:06:45.000Z" title="发表于 2025-01-27 14:06:45">2025-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/306/" title="第三百零六阶：今天，我会在内识中休息。"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/41.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第三百零六阶：今天，我会在内识中休息。"/></a><div class="content"><a class="title" href="/2025/01/27/306/" title="第三百零六阶：今天，我会在内识中休息。">第三百零六阶：今天，我会在内识中休息。</a><time datetime="2025-01-27T06:06:40.000Z" title="发表于 2025-01-27 14:06:40">2025-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/305/" title="第三百零五阶：今天，我感觉到爱的力量。"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/62.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第三百零五阶：今天，我感觉到爱的力量。"/></a><div class="content"><a class="title" href="/2025/01/27/305/" title="第三百零五阶：今天，我感觉到爱的力量。">第三百零五阶：今天，我感觉到爱的力量。</a><time datetime="2025-01-27T06:06:38.000Z" title="发表于 2025-01-27 14:06:38">2025-01-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/27/304/" title="第三百零四阶：今天，我不会成为恐惧的学生。"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/78.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="第三百零四阶：今天，我不会成为恐惧的学生。"/></a><div class="content"><a class="title" href="/2025/01/27/304/" title="第三百零四阶：今天，我不会成为恐惧的学生。">第三百零四阶：今天，我不会成为恐惧的学生。</a><time datetime="2025-01-27T06:06:35.000Z" title="发表于 2025-01-27 14:06:35">2025-01-27</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/"><span class="card-category-list-name">内识之路</span><span class="card-category-list-count">278</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%A5%E8%87%AA%E4%B8%8A%E5%B8%9D%E7%9A%84%E6%96%B0%E8%AE%AF%E6%81%AF/"><span class="card-category-list-name">来自上帝的新讯息</span><span class="card-category-list-count">20</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%A5%E8%87%AA%E4%B8%8A%E5%B8%9D%E7%9A%84%E6%96%B0%E8%AE%AF%E6%81%AF/%E7%AC%AC%E4%B8%89%E5%8D%B7/"><span class="card-category-list-name">第三卷</span><span class="card-category-list-count">20</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%A5%E8%87%AA%E4%B8%8A%E5%B8%9D%E7%9A%84%E6%96%B0%E8%AE%AF%E6%81%AF/%E7%AC%AC%E4%B8%89%E5%8D%B7/%E5%86%85%E8%AF%86%E8%BF%9B%E9%98%B6/"><span class="card-category-list-name">内识进阶</span><span class="card-category-list-count">20</span></a></li></ul></li></ul></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%86%85%E8%AF%86%E5%AD%A6%E7%94%9F/" style="font-size: 1.1em; color: #999">内识学生</a> <a href="/tags/%E5%9B%9E%E9%A1%BE/" style="font-size: 1.1em; color: #999">回顾</a> <a href="/tags/%E8%B4%A3%E4%BB%BB/" style="font-size: 1.1em; color: #999">责任</a> <a href="/tags/%E9%9D%99%E6%AD%A2/" style="font-size: 1.23em; color: #999ea6">静止</a> <a href="/tags/%E7%9F%9B%E7%9B%BE/" style="font-size: 1.1em; color: #999">矛盾</a> <a href="/tags/%E7%A4%BC%E7%89%A9/" style="font-size: 1.1em; color: #999">礼物</a> <a href="/tags/%E9%94%99%E8%AF%AF/" style="font-size: 1.1em; color: #999">错误</a> <a href="/tags/%E5%86%85%E8%AF%86/" style="font-size: 1.1em; color: #999">内识</a> <a href="/tags/%E4%B8%96%E7%95%8C/" style="font-size: 1.37em; color: #99a4b2">世界</a> <a href="/tags/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/" style="font-size: 1.5em; color: #99a9bf">内识之路</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><span class="card-archive-list-count">20</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><span class="card-archive-list-count">35</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><span class="card-archive-list-count">28</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><span class="card-archive-list-count">28</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/09/"><span class="card-archive-list-date">九月 2024</span><span class="card-archive-list-count">35</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">28</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/07/"><span class="card-archive-list-date">七月 2024</span><span class="card-archive-list-count">28</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><span class="card-archive-list-count">30</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-03-24T06:48:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">209.3k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-19T01:45:49.996Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="/pluginsSrc/instant.page/instantpage.js" type="module"></script><script src="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="/pluginsSrc/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%86%85%E8%AF%86%E4%B9%8B%E8%B7%AF/"><span class="card-category-list-name">内识之路</span><span class="card-category-list-count">278</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%A5%E8%87%AA%E4%B8%8A%E5%B8%9D%E7%9A%84%E6%96%B0%E8%AE%AF%E6%81%AF/"><span class="card-category-list-name">来自上帝的新讯息</span><span class="card-category-list-count">28</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%A5%E8%87%AA%E4%B8%8A%E5%B8%9D%E7%9A%84%E6%96%B0%E8%AE%AF%E6%81%AF/%E7%AC%AC%E4%B8%89%E5%8D%B7/"><span class="card-category-list-name">第三卷</span><span class="card-category-list-count">28</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%9D%A5%E8%87%AA%E4%B8%8A%E5%B8%9D%E7%9A%84%E6%96%B0%E8%AE%AF%E6%81%AF/%E7%AC%AC%E4%B8%89%E5%8D%B7/%E5%86%85%E8%AF%86%E8%BF%9B%E9%98%B6/"><span class="card-category-list-name">内识进阶</span><span class="card-category-list-count">28</span></a></li></ul></li></ul></li>
+          </ul></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              一月 2025
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/12/">
+            <span class="card-archive-list-date">
+              十二月 2024
+            </span>
+            <span class="card-archive-list-count">35</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/11/">
+            <span class="card-archive-list-date">
+              十一月 2024
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/10/">
+            <span class="card-archive-list-date">
+              十月 2024
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/09/">
+            <span class="card-archive-list-date">
+              九月 2024
+            </span>
+            <span class="card-archive-list-count">35</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/08/">
+            <span class="card-archive-list-date">
+              八月 2024
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/07/">
+            <span class="card-archive-list-date">
+              七月 2024
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/06/">
+            <span class="card-archive-list-date">
+              六月 2024
+            </span>
+            <span class="card-archive-list-count">30</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2023-03-24T06:48:00.000Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">215.8k</div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-27T08:53:59.867Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/pluginsSrc/@fancyapps/ui/dist/fancybox/fancybox.umd.js"></script><script src="/pluginsSrc/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/pluginsSrc/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
